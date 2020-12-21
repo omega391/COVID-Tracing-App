@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".qrgenerator"
     android:background="@drawable/home">
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/QRGenerator"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".QRgenerator"
-        >
+        tools:context=".QRgenerator">
 
         <TextView
             android:id="@+id/textView9"
@@ -61,7 +62,23 @@
             android:text="Download"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.234"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/QRHolder"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/btnreturn"
+            android:layout_width="143dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/red_button"
+            android:text="Return to Login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.287"
+            app:layout_constraintStart_toEndOf="@+id/download"
             app:layout_constraintTop_toBottomOf="@+id/QRHolder"
             app:layout_constraintVertical_bias="0.0" />
 

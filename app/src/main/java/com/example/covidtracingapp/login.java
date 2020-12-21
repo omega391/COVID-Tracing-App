@@ -1,22 +1,31 @@
 package com.example.covidtracingapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class login extends AppCompatActivity {
     EditText CPnumber;
     CheckBox CBPassword;
     EditText Password;
     Button btnlogin;
-
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +34,7 @@ public class login extends AppCompatActivity {
         CPnumber = findViewById(R.id.CPnumber);
         Password = findViewById(R.id.Password);
         CBPassword = findViewById(R.id.CBPassword);
+        mAuth = FirebaseAuth.getInstance();
         CBPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             // hide and show password
@@ -41,7 +51,39 @@ public class login extends AppCompatActivity {
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            login();
+            }
+        });
+    }
+    private void login(){
+        String Username = CPnumber.getText().toString().trim();
+        String password = Password.getText().toString().trim();
 
+        if(!Patterns.EMAIL_ADDRESS.matcher(Username).matches()){
+            CPnumber.setError("Please Enter Valid Email.");
+            CPnumber.requestFocus();
+            return;
+        }
+        if(password.isEmpty()){
+            Password.setError("Password is Required");
+            Password.requestFocus();
+            return;
+        }
+        if(password.length()<6){
+            Password.setError("Please Re-enter Password");
+            Password.requestFocus();
+            return;
+        }
+        mAuth.signInWithEmailAndPassword(Username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Intent intent = new Intent(login.this, Homepage.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

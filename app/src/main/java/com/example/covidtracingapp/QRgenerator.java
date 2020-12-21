@@ -28,7 +28,7 @@ import java.io.OutputStream;
 
 public class QRgenerator extends AppCompatActivity {
 
-    Button  download;
+    Button  download, btnreturn;
     ImageView QRHolder;
 
     TextView textView2;
@@ -37,7 +37,7 @@ public class QRgenerator extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrgenerator);
-
+        btnreturn = (Button)findViewById(R.id.btnreturn);
         QRHolder = findViewById(R.id.QRHolder);
         download = (Button)findViewById(R.id.download);
         textView2 = (TextView)findViewById(R.id.textView2);
@@ -56,8 +56,7 @@ public class QRgenerator extends AppCompatActivity {
                             , null);
                     Toast.makeText(QRgenerator.this, "Saved to Gallery", Toast.LENGTH_SHORT)
                             .show();
-                    openlogin();
-                    finish();
+
 
                 }
             });
@@ -68,11 +67,19 @@ public class QRgenerator extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
+    btnreturn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(QRgenerator.this, login.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+    });
     }
     public void openlogin(){
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
+
 
 }
