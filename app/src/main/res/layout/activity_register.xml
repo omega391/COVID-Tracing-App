@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".register">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/home"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="0dp"
+            android:layout_height="272dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/bungee"
+            android:text="COVID SCOUT"
+            android:textAlignment="center"
+            android:textColor="#E25E5E"
+            android:textSize="80sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="240dp"
+            android:fontFamily="@font/alfa_slab_one"
+            android:text="Registration"
+            android:textAlignment="center"
+            android:textColor="#FF5757"
+            android:textSize="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Please fill up the form below"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <EditText
+            android:id="@+id/Email"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="48dp"
+            android:backgroundTint="#FF5757"
+            android:ems="10"
+            android:hint="Email Address"
+            android:inputType="textWebEmailAddress"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FF5757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ID" />
+
+        <EditText
+            android:id="@+id/Fname"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:backgroundTint="#FF5757"
+            android:ems="10"
+            android:hint="First Name"
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FF5757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Email" />
+
+        <EditText
+            android:id="@+id/Mname"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:backgroundTint="#FF5757"
+            android:ems="10"
+            android:hint="Middle Name"
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FF5757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Fname" />
+
+        <EditText
+            android:id="@+id/Lname"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:backgroundTint="#FF5757"
+            android:ems="10"
+            android:hint="Last Name "
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FF5757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Mname" />
+
+        <EditText
+            android:id="@+id/CPnumber"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:backgroundTint="#FF5757"
+            android:ems="10"
+            android:hint="Contact Number"
+            android:inputType="phone"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FF5757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Lname" />
+
+        <EditText
+            android:id="@+id/HomeAddress"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:backgroundTint="#FF5757"
+            android:ems="10"
+            android:hint="Home Address"
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FF5757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CPnumber" />
+
+        <Button
+            android:id="@+id/btnsubmit"
+            android:layout_width="203dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/red_button"
+            android:text="Submit"
+            android:textColor="#550D21"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HomeAddress"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/ID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
