@@ -34,7 +34,6 @@ public class register extends AppCompatActivity {
     Button btnsubmit;
     DatabaseReference DB;
     FirebaseAuth mAuth;
-    ProgressBar progressbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +49,6 @@ public class register extends AppCompatActivity {
         pwd = (EditText)findViewById(R.id.pwd);
         btnsubmit = findViewById(R.id.btnsubmit);
         QRHolder = findViewById(R.id.QRHolder);
-        progressbar = findViewById(R.id.progressbar);
         mAuth = FirebaseAuth.getInstance();
         //Database reference
         DB = FirebaseDatabase.getInstance().getReference().child("Userinfo");
@@ -105,7 +103,7 @@ public class register extends AppCompatActivity {
                 return;
 
             }
-            progressbar.setVisibility(View.VISIBLE);
+
             Information information = new Information(email, fname, mname, lname, cpnumber, address);
             DB.child(id).setValue(information);
             AccID.setText(id);
@@ -114,7 +112,7 @@ public class register extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        progressbar.setVisibility(View.GONE);
+
                         Toast.makeText(register.this, "User Registered Successful", Toast.LENGTH_SHORT).show();
                         String Value = AccID.getText().toString();
                         Intent i = new Intent(register.this, QRgenerator.class);

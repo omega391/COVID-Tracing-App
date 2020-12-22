@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,7 @@ public class login extends AppCompatActivity {
     EditText Password;
     Button btnlogin;
     FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,7 @@ public class login extends AppCompatActivity {
         Password = findViewById(R.id.Password);
         CBPassword = findViewById(R.id.CBPassword);
         mAuth = FirebaseAuth.getInstance();
+
         CBPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             // hide and show password
@@ -77,7 +80,9 @@ public class login extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(Username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+
                 if(task.isSuccessful()){
+                    finish();
                     Intent intent = new Intent(login.this, Homepage.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
@@ -86,5 +91,16 @@ public class login extends AppCompatActivity {
                 }
             }
         });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (mAuth.getCurrentUser() != null){
+            finish();
+            startActivity(new Intent(login.this, Homepage.class));
+        }
     }
 }
