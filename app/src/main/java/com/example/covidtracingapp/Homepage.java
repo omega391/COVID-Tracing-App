@@ -66,7 +66,7 @@ public class Homepage extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Userinfo").child(uid);
-
+// Logout Button 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,11 +77,12 @@ public class Homepage extends AppCompatActivity {
                 Toast.makeText(Homepage.this, "You have been Logged out.", Toast.LENGTH_SHORT).show();
             }
         });
-
+// Fetching Data From firebase Database using UserID
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String url_link = dataSnapshot.child("url").getValue().toString();
+                // used Picasso to set QR using URL fetched from Database
                 Picasso.get()
                         .load(url_link)
                         .into(image);
