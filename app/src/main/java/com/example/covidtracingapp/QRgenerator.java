@@ -16,10 +16,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -41,6 +43,9 @@ public class QRgenerator extends AppCompatActivity {
         QRHolder = findViewById(R.id.QRHolder);
         download = (Button)findViewById(R.id.download);
         textView2 = (TextView)findViewById(R.id.textView2);
+        FirebaseAuth.getInstance().signOut();
+
+
         //call register page function
         String myIntent = super.getIntent().getStringExtra("key");
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
@@ -48,8 +53,6 @@ public class QRgenerator extends AppCompatActivity {
             BitMatrix bitMatrix = multiFormatWriter.encode(myIntent, BarcodeFormat.QR_CODE,500,500);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             final Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-            bitmap.compress(Bitmap.CompressFormat.JPEG,100, outputStream);
-
             QRHolder.setImageBitmap(bitmap);
             download.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -75,6 +78,8 @@ public class QRgenerator extends AppCompatActivity {
             Intent intent = new Intent(QRgenerator.this, login.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
+            finish();
+
         }
     });
     }

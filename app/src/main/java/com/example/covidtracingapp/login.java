@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class login extends AppCompatActivity {
     EditText CPnumber;
@@ -27,12 +28,14 @@ public class login extends AppCompatActivity {
     EditText Password;
     Button btnlogin;
     FirebaseAuth mAuth;
-
+//    FirebaseUser user;
+//    String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+//        user = FirebaseAuth.getInstance().getCurrentUser();
+//        uid = user.getUid();
         CPnumber = findViewById(R.id.CPnumber);
         Password = findViewById(R.id.Password);
         CBPassword = findViewById(R.id.CBPassword);
@@ -99,6 +102,7 @@ public class login extends AppCompatActivity {
         super.onStart();
 
         if (mAuth.getCurrentUser() != null){
+//            Toast.makeText(login.this, uid, Toast.LENGTH_SHORT).show();
             finish();
             startActivity(new Intent(login.this, Homepage.class));
         }

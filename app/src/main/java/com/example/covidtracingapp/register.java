@@ -144,9 +144,9 @@ public class register extends AppCompatActivity {
                                                     DB.child(uid).setValue(information);
                                                     AccID.setText(uid);
                                                     Toast.makeText(register.this, "User Registered Successful", Toast.LENGTH_SHORT).show();
-                                                    String Value = AccID.getText().toString();
+
                                                     Intent i = new Intent(register.this, QRgenerator.class);
-                                                    i.putExtra("key", Value);
+                                                    i.putExtra("key", uid);
                                                     startActivity(i);
                                                     finish();
                                                 }
