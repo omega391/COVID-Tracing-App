@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -23,20 +24,32 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Homepage extends AppCompatActivity {
     private static final int CHOOSE_IMAGE = 101 ;
-    EditText editText, photoURL;
+    EditText editText, photoURL, FNAME;
     ImageView image;
-    Button button;
+    Button button, logout;
     Uri uriProfileImage;
     String profileImageUrl;
     FirebaseAuth mAuth;
+    StorageReference mStorageReference;
+    DatabaseReference databaseReference;
+    FirebaseUser user;
+    String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +59,22 @@ public class Homepage extends AppCompatActivity {
         button = findViewById(R.id.btnsave);
         mAuth = FirebaseAuth.getInstance();
         photoURL = findViewById(R.id.PhotoURL);
+        logout = findViewById(R.id.logout);
+        FNAME = findViewById(R.id.FNAME);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        uid = user.getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Userinfo").child(uid);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent i = new Intent(Homepage.this, login.class);
+                startActivity(i);
+                finish();
+                Toast.makeText(Homepage.this, "You have been Logged out.", Toast.LENGTH_SHORT).show();
+            }
+        });
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,11 +89,29 @@ public class Homepage extends AppCompatActivity {
         });
         loadUserInformation();
 
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String url_link = dataSnapshot.child("url").getValue().toString();
+                Picasso.get()
+                        .load(url_link)
+                        .into(image);
+
+                String user_name = dataSnapshot.child("fname").getValue().toString();
+                FNAME.setText(user_name);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void loadUserInformation() {
         FirebaseUser user = mAuth.getCurrentUser();
-
+        String a = mAuth.getCurrentUser().toString();
+        photoURL.setText(profileImageUrl);
 
         if (user != null) {
             if (user.getPhotoUrl() != null) {
@@ -127,6 +174,7 @@ public class Homepage extends AppCompatActivity {
                 image.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
+                Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
             }
             uploadImageToFirebaseStorage();
         }
@@ -140,8 +188,14 @@ public class Homepage extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                       profileImageUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-                       photoURL.setText(profileImageUrl);
+                        profileImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Uri downloadUrl = uri;
+                                String j = downloadUrl.toString();
+                                photoURL.setText(j);
+                            }
+                        });
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

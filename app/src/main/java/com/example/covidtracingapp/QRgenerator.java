@@ -32,7 +32,7 @@ public class QRgenerator extends AppCompatActivity {
     ImageView QRHolder;
 
     TextView textView2;
-
+    OutputStream outputStream;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +48,8 @@ public class QRgenerator extends AppCompatActivity {
             BitMatrix bitMatrix = multiFormatWriter.encode(myIntent, BarcodeFormat.QR_CODE,500,500);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             final Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100, outputStream);
+
             QRHolder.setImageBitmap(bitmap);
             download.setOnClickListener(new View.OnClickListener() {
                 @Override

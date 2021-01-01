@@ -7,7 +7,7 @@ public class Information {
     String Lname;
     String CPnumber;
     String Address;
-
+    String url;
 
 
 
@@ -36,9 +36,10 @@ public class Information {
         return Address;
     }
 
+    public String getUrl() { return url;}
 
 
-    public Information( String Email, String Fname, String Mname, String Lname, String CPnumber, String Address){
+    public Information( String Email, String Fname, String Mname, String Lname, String CPnumber, String Address, String url){
 
         this.Email = Email;
         this.Fname = Fname;
@@ -46,6 +47,7 @@ public class Information {
         this.Lname = Lname;
         this.CPnumber = CPnumber;
         this. Address = Address;
+        this.url = url;
 
     }
 
