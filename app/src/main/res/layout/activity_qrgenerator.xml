@@ -13,24 +13,6 @@
         android:layout_height="match_parent"
         tools:context=".QRgenerator">
 
-        <EditText
-            android:id="@+id/TEST"
-            android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#FF5757"
-            android:ems="10"
-            android:hint="Email Address"
-            android:inputType="textWebEmailAddress"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FF5757"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnreturn" />
-
         <TextView
             android:id="@+id/textView9"
             android:layout_width="0dp"
@@ -52,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_marginTop="232dp"
-            android:text="Thank you for filling up the information needed. Here is your QR Code. Please press download to save to Gallery. "
+            android:text="Thank you for filling up the information needed. Here is your QR Code. Please press download to save to Gallery to use for offline or printing purposes."
             android:textAlignment="center"
             android:textColor="#FAFFFFFF"
             android:textSize="24sp"
