@@ -45,15 +45,18 @@ public class QRgenerator extends AppCompatActivity {
         textView2 = (TextView)findViewById(R.id.textView2);
         FirebaseAuth.getInstance().signOut();
 
-
-        //call register page function
+//call register page function
         String myIntent = super.getIntent().getStringExtra("key");
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-        try{//generate QR code
+        try{
+        	
+//generate QR code
             BitMatrix bitMatrix = multiFormatWriter.encode(myIntent, BarcodeFormat.QR_CODE,500,500);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             final Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
             QRHolder.setImageBitmap(bitmap);
+            
+// Download Button saves to users gallery        
             download.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -61,13 +64,8 @@ public class QRgenerator extends AppCompatActivity {
                             , null);
                     Toast.makeText(QRgenerator.this, "Saved to Gallery", Toast.LENGTH_SHORT)
                             .show();
-
-
                 }
             });
-
-
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -87,6 +85,5 @@ public class QRgenerator extends AppCompatActivity {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
-
 
 }
