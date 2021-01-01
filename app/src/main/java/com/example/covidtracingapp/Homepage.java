@@ -96,7 +96,7 @@ public class Homepage extends AppCompatActivity {
                 String address = dataSnapshot.child("address").getValue().toString();
                 FNAME.setText(middlename);
                 MNAME.setText(firstname);
-                LNAME.setText(lastname);
+                LNAME.setText(firstname);
                 CPNUM.setText(cpnumb);
                 EMAIL.setText(email);
                 ADDRESS.setText(address);
