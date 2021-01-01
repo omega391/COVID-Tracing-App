@@ -138,8 +138,7 @@ public class register extends AppCompatActivity {
 
                                                     //to open QRgenerator page and let to import data here
                                                     String id = DB.push().getKey();
-
-
+													// Get which String is inserted to Database 
                                                     Information information = new Information(email, fname, mname, lname, cpnumber, address, url);
                                                     DB.child(uid).setValue(information);
                                                     AccID.setText(uid);
