@@ -181,10 +181,6 @@ public class register extends AppCompatActivity {
         //Show and Hide Password using Checkbox
 
     }
-        //save input to database
-    private void addInformation(String j) {
-
-    }
 
 
 }
