@@ -81,6 +81,7 @@ public class Homepage extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+              // Fetch QR url link that is storage on Firebase Storage
                 String url_link = dataSnapshot.child("url").getValue().toString();
                 // used Picasso to set QR using URL fetched from Database
                 Picasso.get()
