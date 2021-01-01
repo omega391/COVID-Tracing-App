@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
        btnlogin.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-
-               Toast.makeText(MainActivity.this, "uid", Toast.LENGTH_SHORT).show();
                Intent intent = new Intent(MainActivity.this, login.class);
                startActivity(intent);
            }
