@@ -40,6 +40,7 @@ public class login extends AppCompatActivity {
         Password = findViewById(R.id.Password);
         CBPassword = findViewById(R.id.CBPassword);
         mAuth = FirebaseAuth.getInstance();
+        btnlogin = findViewById(R.id.btnlogin);
 
         CBPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -53,7 +54,7 @@ public class login extends AppCompatActivity {
             }
 
         });
-        btnlogin = findViewById(R.id.btnlogin);
+ //Login Button   
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
