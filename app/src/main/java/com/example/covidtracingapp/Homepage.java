@@ -94,11 +94,11 @@ public class Homepage extends AppCompatActivity {
                 String cpnumb = dataSnapshot.child("cpnumber").getValue().toString();
                 String email = dataSnapshot.child("email").getValue().toString();
                 String address = dataSnapshot.child("address").getValue().toString();
-                FNAME.setText(middlename);
-                MNAME.setText(firstname);
+                FNAME.setText(firstname);
+                MNAME.setText(middlename);
                 LNAME.setText(lastname);
                 CPNUM.setText(cpnumb);
-                EMAIL.setText(cpnumb);
+                EMAIL.setText(email);
                 ADDRESS.setText(address);
 
             }
