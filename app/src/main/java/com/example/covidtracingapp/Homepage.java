@@ -98,7 +98,7 @@ public class Homepage extends AppCompatActivity {
                 MNAME.setText(firstname);
                 LNAME.setText(lastname);
                 CPNUM.setText(cpnumb);
-                EMAIL.setText(email);
+                EMAIL.setText(cpnumb);
                 ADDRESS.setText(address);
 
             }
