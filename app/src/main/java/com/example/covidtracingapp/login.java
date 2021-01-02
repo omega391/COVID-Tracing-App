@@ -3,6 +3,8 @@ package com.example.covidtracingapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -28,6 +30,7 @@ public class login extends AppCompatActivity {
     EditText Password;
     Button btnlogin;
     FirebaseAuth mAuth;
+    ProgressDialog progressDialog;
 //    FirebaseUser user;
 //    String uid;
     @Override
@@ -41,6 +44,7 @@ public class login extends AppCompatActivity {
         CBPassword = findViewById(R.id.CBPassword);
         mAuth = FirebaseAuth.getInstance();
         btnlogin = findViewById(R.id.btnlogin);
+
 
         CBPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -58,6 +62,8 @@ public class login extends AppCompatActivity {
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            Context context;
+
             login();
             }
         });
@@ -81,6 +87,12 @@ public class login extends AppCompatActivity {
             Password.requestFocus();
             return;
         }
+        progressDialog = new ProgressDialog(login.this);
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.getWindow().setBackgroundDrawableResource(
+                android.R.color.transparent
+        );
         mAuth.signInWithEmailAndPassword(Username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -90,8 +102,10 @@ public class login extends AppCompatActivity {
                     Intent intent = new Intent(login.this, Homepage.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                    progressDialog.dismiss();
                 }else {
                     Toast.makeText(login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                 }
             }
         });

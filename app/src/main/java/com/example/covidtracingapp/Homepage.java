@@ -4,6 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -49,6 +53,7 @@ public class Homepage extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseUser user;
     String uid;
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,9 +68,19 @@ public class Homepage extends AppCompatActivity {
         CPNUM = findViewById(R.id.CPNUM);
         ADDRESS = findViewById(R.id.ADDRESS);
         EMAIL = findViewById(R.id.EMAIL);
+
+// Loading ProgressDialog
+        progressDialog = new ProgressDialog(Homepage.this);
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.getWindow().setBackgroundDrawableResource(
+                android.R.color.transparent
+        );
+// gets the users UserID when user Logs in.
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Userinfo").child(uid);
+
 // Logout Button 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,13 +92,14 @@ public class Homepage extends AppCompatActivity {
                 Toast.makeText(Homepage.this, "You have been Logged out.", Toast.LENGTH_SHORT).show();
             }
         });
-// Fetching Data From firebase Database using UserID
+
+// Fetching Data From firebase Database using UserID.
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-              // Fetch QR url link that is storage on Firebase Storage
+              // Fetch QR url link that is storage on Firebase Storage.
                 String url_link = dataSnapshot.child("url").getValue().toString();
-                // used Picasso to set QR using URL fetched from Database
+                // used Picasso to set QR using URL fetched from Database.
                 Picasso.get()
                         .load(url_link)
                         .into(image);
@@ -100,7 +116,7 @@ public class Homepage extends AppCompatActivity {
                 CPNUM.setText(cpnumb);
                 EMAIL.setText(email);
                 ADDRESS.setText(address);
-
+                progressDialog.dismiss();
             }
 
             @Override
@@ -109,7 +125,7 @@ public class Homepage extends AppCompatActivity {
             }
         });
     }
-
+// Onstart to Check if a User is Already Logged In.
     @Override
     protected void onStart() {
         super.onStart();
@@ -118,5 +134,22 @@ public class Homepage extends AppCompatActivity {
             finish();
             startActivity(new Intent(Homepage.this, MainActivity.class));
         }
+    }
+// uses AlertDialog to confirm if user intentionally pressed Back to Sign out.
+    @Override
+    public void onBackPressed() {
+
+       new AlertDialog.Builder(this)
+                .setTitle("Sign-out")
+                .setMessage("Do you want to Sign out?")
+                .setNegativeButton("No", null)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        FirebaseAuth.getInstance().signOut();
+                        finish();
+                    }
+                }).create().show();
+
     }
 }

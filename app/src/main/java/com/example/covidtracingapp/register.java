@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -53,6 +55,7 @@ public class register extends AppCompatActivity {
     FirebaseUser user;
     String uid;
     OutputStream outputStream;
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +78,8 @@ public class register extends AppCompatActivity {
         btnsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 String Username = Email.getText().toString().trim();
                 String password = pwd.getText().toString().trim();
                 if(!Patterns.EMAIL_ADDRESS.matcher(Username).matches()){
@@ -88,14 +93,20 @@ public class register extends AppCompatActivity {
                     return;
 
                 }
+                progressDialog = new ProgressDialog(register.this);
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.progress_dialog);
+                progressDialog.getWindow().setBackgroundDrawableResource(
+                        android.R.color.transparent
+                );
                 mAuth.createUserWithEmailAndPassword(Username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            final StorageReference profileImageRef = FirebaseStorage.getInstance().getReference("profilepics/" + System.currentTimeMillis() + ".jpg");
+
                             user = FirebaseAuth.getInstance().getCurrentUser();
                             uid = user.getUid();
-
+                            final StorageReference profileImageRef = FirebaseStorage.getInstance().getReference("profilepics/" + uid + ".jpg");
                             MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
                             try{//generate QR code
                                 BitMatrix bitMatrix = multiFormatWriter.encode(uid, BarcodeFormat.QR_CODE,500,500);
@@ -142,6 +153,7 @@ public class register extends AppCompatActivity {
                                                     Information information = new Information(email, fname, mname, lname, cpnumber, address, url);
                                                     DB.child(uid).setValue(information);
                                                     AccID.setText(uid);
+                                                    progressDialog.dismiss();
                                                     Toast.makeText(register.this, "User Registered Successful", Toast.LENGTH_SHORT).show();
 
                                                     Intent i = new Intent(register.this, QRgenerator.class);
@@ -156,7 +168,8 @@ public class register extends AppCompatActivity {
                                 uploadtask.addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-
+                                        Toast.makeText(register.this, "Registration Failed, Please Try Again Later.", Toast.LENGTH_SHORT).show();
+                                        progressDialog.dismiss();
                                     }
                                 });
                             }catch (Exception e){
