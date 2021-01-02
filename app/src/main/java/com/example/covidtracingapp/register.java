@@ -177,7 +177,7 @@ public class register extends AppCompatActivity {
 
             }
         });
-        //Show and Hide Password using Checkbox
+
 
     }
 
