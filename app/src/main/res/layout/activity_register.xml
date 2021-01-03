@@ -9,14 +9,37 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/home"
-        android:padding="10dp">
+        android:background="@drawable/home">
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="847dp"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/login_button_custom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+        <TextView
+            android:id="@+id/PROFPICTXTVIEW"
+            android:layout_width="305dp"
+            android:layout_height="24dp"
+
+            android:layout_marginTop="12dp"
+            android:text="Please select Profile picture: "
+            android:textColor="#FD595B"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.349"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view2" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="0dp"
             android:layout_height="272dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/bungee"
             android:text="COVID SCOUT"
             android:textAlignment="center"
@@ -24,7 +47,7 @@
             android:textSize="80sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintHorizontal_bias="0.526"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,29 +79,32 @@
 
         <EditText
             android:id="@+id/Email"
-            android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="48dp"
-            android:backgroundTint="#FF5757"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/round_border"
             android:ems="10"
+            android:gravity="center"
             android:hint="Email Address"
             android:inputType="textWebEmailAddress"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textColorHint="#FF5757"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/ID" />
+            app:layout_constraintTop_toBottomOf="@+id/dpHolder" />
 
         <EditText
             android:id="@+id/Fname"
             android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:backgroundTint="#FF5757"
+            android:layout_height="51dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_border"
             android:ems="10"
+            android:gravity="center"
             android:hint="First Name"
             android:inputType="textPersonName"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textColorHint="#FF5757"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,12 +113,14 @@
         <EditText
             android:id="@+id/Mname"
             android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:backgroundTint="#FF5757"
+            android:layout_height="51dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_border"
             android:ems="10"
+            android:gravity="center"
             android:hint="Middle Name"
             android:inputType="textPersonName"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textColorHint="#FF5757"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -102,12 +130,14 @@
         <EditText
             android:id="@+id/Lname"
             android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:backgroundTint="#FF5757"
+            android:layout_height="51dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_border"
             android:ems="10"
+            android:gravity="center"
             android:hint="Last Name "
             android:inputType="textPersonName"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textColorHint="#FF5757"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -116,12 +146,14 @@
         <EditText
             android:id="@+id/CPnumber"
             android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:backgroundTint="#FF5757"
+            android:layout_height="51dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_border"
             android:ems="10"
+            android:gravity="center"
             android:hint="Contact Number"
             android:inputType="phone"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textColorHint="#FF5757"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -130,12 +162,14 @@
         <EditText
             android:id="@+id/homeAddress"
             android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:backgroundTint="#FF5757"
+            android:layout_height="51dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_border"
             android:ems="10"
+            android:gravity="center"
             android:hint="Home Address"
             android:inputType="textPersonName"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textColorHint="#FF5757"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -155,7 +189,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pwd" />
+            app:layout_constraintTop_toBottomOf="@+id/pwd"
+            app:layout_constraintVertical_bias="0.76" />
 
         <TextView
             android:id="@+id/ID"
@@ -168,13 +203,15 @@
 
         <EditText
             android:id="@+id/pwd"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FF5757"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_border"
             android:ems="10"
+            android:gravity="center"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textColorHint="#FF5757"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.517"
@@ -193,6 +230,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/dpHolder"
+            android:layout_width="184dp"
+            android:layout_height="159dp"
+            android:layout_marginTop="44dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view2"
+            tools:srcCompat="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

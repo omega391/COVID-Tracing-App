@@ -4,17 +4,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -48,7 +52,7 @@ public class register extends AppCompatActivity {
     CheckBox CBPassword;
     EditText Email, Fname, Mname, Lname, CPnumber, HomeAddress, pwd;
     TextView AccID;
-    ImageView QRHolder;
+    ImageView dpHolder;
     Button btnsubmit;
     DatabaseReference DB;
     FirebaseAuth mAuth;
@@ -56,6 +60,7 @@ public class register extends AppCompatActivity {
     String uid;
     OutputStream outputStream;
     ProgressDialog progressDialog;
+    int PICK_IMAGES = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +75,29 @@ public class register extends AppCompatActivity {
         HomeAddress = findViewById(R.id.pwd);
         pwd = (EditText)findViewById(R.id.pwd);
         btnsubmit = findViewById(R.id.btnsubmit);
-        QRHolder = findViewById(R.id.QRHolder);
+        dpHolder = findViewById(R.id.dpHolder);
+        dpHolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context;
+                new AlertDialog.Builder(register.this)
+                    .setTitle("Upload Profile Picture")
+                    .setMessage("Capture Picture using Camera or get Picture From Storage")
+                    .setNegativeButton("Camera", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    })
+                    .setPositiveButton("Upload", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            selectdp();
+                        }
+                    }).create().show();
+
+            }
+        });
         mAuth = FirebaseAuth.getInstance();
         //Database reference
         DB = FirebaseDatabase.getInstance().getReference().child("Userinfo");
@@ -194,5 +221,12 @@ public class register extends AppCompatActivity {
 
     }
 
+    public void selectdp (){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGES);
+
+    }
 
 }
