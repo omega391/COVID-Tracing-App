@@ -13,25 +13,130 @@
 
         <View
             android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="847dp"
-            android:layout_marginTop="44dp"
+            android:layout_width="416dp"
+            android:layout_height="1073dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/login_button_custom"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
         <TextView
             android:id="@+id/PROFPICTXTVIEW"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:text="Email Address:"
+            android:textColor="#FD595B"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dpHolder" />
+
+        <TextView
+            android:id="@+id/PROFPICTXTVIEW8"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Home Address:"
+            android:textColor="#FD595B"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CPnumber" />
+
+        <TextView
+            android:id="@+id/PROFPICTXTVIEW11"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Last Name:"
+            android:textColor="#FD595B"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Mname" />
+
+        <TextView
+            android:id="@+id/PROFPICTXTVIEW9"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Contact Number:"
+            android:textColor="#FD595B"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Lname" />
+
+        <TextView
+            android:id="@+id/PROFPICTXTVIEW10"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Password:"
+            android:textColor="#FD595B"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/homeAddress" />
+
+        <TextView
+            android:id="@+id/PROFPICTXTVIEW3"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="First Name:"
+            android:textColor="#FD595B"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Email" />
+
+        <TextView
+            android:id="@+id/PROFPICTXTVIEW4"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Middle Name:"
+            android:textColor="#FD595B"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Fname" />
+
+        <TextView
+            android:id="@+id/PROFPICTXTVIEW2"
             android:layout_width="305dp"
             android:layout_height="24dp"
 
             android:layout_marginTop="12dp"
-            android:text="Please select Profile picture: "
+            android:text="Press to select Profile picture: "
             android:textColor="#FD595B"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.349"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view2" />
 
@@ -78,102 +183,130 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <EditText
-            android:id="@+id/Email"
+            android:id="@+id/Mname"
             android:layout_width="match_parent"
             android:layout_height="51dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/round_border"
             android:ems="10"
             android:gravity="center"
-            android:hint="Email Address"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+            android:textColorHint="#FF5757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.548"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PROFPICTXTVIEW4" />
+
+        <EditText
+            android:id="@+id/Email"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/round_border"
+            android:ems="10"
+            android:gravity="center"
             android:inputType="textWebEmailAddress"
             android:textColor="#000000"
             android:textColorHint="#FF5757"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dpHolder" />
+            app:layout_constraintTop_toBottomOf="@+id/PROFPICTXTVIEW" />
 
         <EditText
             android:id="@+id/Fname"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="51dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/round_border"
             android:ems="10"
             android:gravity="center"
-            android:hint="First Name"
-            android:inputType="textPersonName"
-            android:textColor="#000000"
-            android:textColorHint="#FF5757"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Email" />
-
-        <EditText
-            android:id="@+id/Mname"
-            android:layout_width="0dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/round_border"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Middle Name"
             android:inputType="textPersonName"
             android:textColor="#000000"
             android:textColorHint="#FF5757"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Fname" />
-
-        <EditText
-            android:id="@+id/Lname"
-            android:layout_width="0dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/round_border"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Last Name "
-            android:inputType="textPersonName"
-            android:textColor="#000000"
-            android:textColorHint="#FF5757"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Mname" />
+            app:layout_constraintTop_toBottomOf="@+id/PROFPICTXTVIEW3" />
 
         <EditText
             android:id="@+id/CPnumber"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="51dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/round_border"
             android:ems="10"
             android:gravity="center"
-            android:hint="Contact Number"
             android:inputType="phone"
             android:textColor="#000000"
             android:textColorHint="#FF5757"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.548"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Lname" />
+            app:layout_constraintTop_toBottomOf="@+id/PROFPICTXTVIEW9" />
 
         <EditText
             android:id="@+id/homeAddress"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="51dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/round_border"
             android:ems="10"
             android:gravity="center"
-            android:hint="Home Address"
             android:inputType="textPersonName"
             android:textColor="#000000"
             android:textColorHint="#FF5757"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.545"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/CPnumber" />
+            app:layout_constraintTop_toBottomOf="@+id/PROFPICTXTVIEW8" />
+
+        <EditText
+            android:id="@+id/pwd"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/round_border"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:textColor="#000000"
+            android:textColorHint="#FF5757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.545"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PROFPICTXTVIEW10" />
+
+        <EditText
+            android:id="@+id/Lname"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/round_border"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+            android:textColorHint="#FF5757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PROFPICTXTVIEW11" />
 
         <Button
             android:id="@+id/btnsubmit"
@@ -190,33 +323,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pwd"
-            app:layout_constraintVertical_bias="0.76" />
+            app:layout_constraintVertical_bias="0.333" />
 
         <TextView
             android:id="@+id/ID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
-        <EditText
-            android:id="@+id/pwd"
-            android:layout_width="match_parent"
-            android:layout_height="51dp"
+        <TextView
+            android:id="@+id/ID2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@drawable/round_border"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textColor="#000000"
-            android:textColorHint="#FF5757"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.517"
+            app:layout_constraintHorizontal_bias="0.586"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/homeAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
         <androidx.core.widget.ContentLoadingProgressBar
             android:visibility="gone"
@@ -233,14 +362,14 @@
 
         <ImageView
             android:id="@+id/dpHolder"
-            android:layout_width="184dp"
-            android:layout_height="159dp"
-            android:layout_marginTop="44dp"
+            android:layout_width="131dp"
+            android:layout_height="168dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/dpupload"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view2"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="@+id/view2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

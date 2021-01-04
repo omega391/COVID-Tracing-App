@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 //    FirebaseUser user;
 //    String uid;
     FirebaseAuth mAuth;
+    final int CAMERA_REQUEST = 1888;
+    final int MY_CAMERA_PERMISSION_CODE = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +30,23 @@ public class MainActivity extends AppCompatActivity {
         btnregister = (Button) findViewById(R.id.btnregister);
         btnlogin = (Button) findViewById(R.id.btnlogin);
         FirebaseAuth.getInstance().signOut();
- // Permission of Storage Access
+
+ // check for Camera Permissions
+        if (ActivityCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+
+        }else {
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.CAMERA}, 100);
+        }
+ // check for Permission of Storage Access
+
         if (ActivityCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+
         } else {
-            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 44);
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 44);
         }
 
         btnregister.setOnClickListener(new View.OnClickListener() {
