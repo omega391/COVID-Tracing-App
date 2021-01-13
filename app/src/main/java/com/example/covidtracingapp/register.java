@@ -78,7 +78,7 @@ public class register extends AppCompatActivity {
         Mname = findViewById(R.id.Mname);
         Lname = findViewById(R.id.Lname);
         CPnumber = findViewById(R.id.CPnumber);
-        HomeAddress = findViewById(R.id.pwd);
+        HomeAddress = findViewById(R.id.homeAddress);
         pwd = (EditText)findViewById(R.id.pwd);
         btnsubmit = findViewById(R.id.btnsubmit);
         dpHolder = findViewById(R.id.dpHolder);
