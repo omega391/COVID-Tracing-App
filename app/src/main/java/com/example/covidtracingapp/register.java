@@ -290,5 +290,5 @@ public class register extends AppCompatActivity {
 //        FRAAAAAANZZZZZZZ
 //                FRAAAAAANZZZZZZZ
 //        FRAAAAAANZZZZZZZ
-
+// https://github.com/omega391/COVID-Tracing-App/invitations
 }
