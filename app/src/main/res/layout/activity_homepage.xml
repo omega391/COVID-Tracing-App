@@ -213,15 +213,15 @@
 
         <at.markushi.ui.CircleButton
             android:id="@+id/qrbtn"
-            android:layout_width="92dp"
-            android:layout_height="85dp"
+            android:layout_width="102dp"
+            android:layout_height="96dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="68dp"
-            android:src="@drawable/qrlogo"
+            android:src="@drawable/logo4"
             app:cb_color="#E25E5E"
             app:cb_pressedRingWidth="8dip"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.384"
+            app:layout_constraintHorizontal_bias="0.387"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/view" />
 
