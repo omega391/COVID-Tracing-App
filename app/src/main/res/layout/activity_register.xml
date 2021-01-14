@@ -13,12 +13,11 @@
 
         <View
             android:id="@+id/view2"
-            android:layout_width="416dp"
-            android:layout_height="1073dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="407dp"
+            android:layout_height="1075dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/login_button_custom"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -35,7 +34,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dpHolder" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <TextView
             android:id="@+id/PROFPICTXTVIEW8"
@@ -133,7 +132,7 @@
             android:layout_height="24dp"
 
             android:layout_marginTop="12dp"
-            android:text="Press to select Profile picture: "
+            android:text="Press image to select Profile picture: "
             android:textColor="#FD595B"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -360,15 +359,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/dpHolder"
-            android:layout_width="131dp"
-            android:layout_height="168dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+
+            android:id="@+id/imageView"
+            android:layout_width="187dp"
+            android:layout_height="180dp"
             android:layout_marginTop="52dp"
-            android:background="@drawable/dpupload"
+            android:src="@drawable/dpupload"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view2" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

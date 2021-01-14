@@ -30,10 +30,10 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="876dp"
-            android:layout_marginTop="260dp"
+            android:layout_marginTop="256dp"
             android:background="@drawable/login_button_custom"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.021"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -175,15 +175,15 @@
             android:id="@+id/FNAMETXTVIEW"
             android:layout_width="match_parent"
             android:layout_height="19dp"
-            android:layout_marginTop="12dp"
-            android:text="    First Name"
+            android:layout_marginTop="47dp"
 
+            android:text="    First Name"
             android:textColor="#FD595B"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/qrbtn" />
 
         <TextView
             android:id="@+id/FNAME"
@@ -202,7 +202,6 @@
             android:id="@+id/logout"
             android:layout_width="141dp"
             android:layout_height="38dp"
-            android:layout_marginTop="12dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/red_button"
             android:text="Logout"
@@ -210,33 +209,36 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnsave"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/btnsave"
-            android:layout_width="141dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/red_button"
-            android:text="Login"
-            android:textColor="#FF550D21"
-            android:textStyle="bold"
+        <at.markushi.ui.CircleButton
+            android:id="@+id/qrbtn"
+            android:layout_width="92dp"
+            android:layout_height="85dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="68dp"
+            android:src="@drawable/qrlogo"
+            app:cb_color="#E25E5E"
+            app:cb_pressedRingWidth="8dip"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/EMAIL" />
+            app:layout_constraintHorizontal_bias="0.384"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/view" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+
             android:id="@+id/imageView"
-            android:layout_width="310dp"
-            android:layout_height="237dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.577"
+            android:layout_width="162dp"
+            android:layout_height="153dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="23dp"
+            android:src="@drawable/dpupload"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/FNAMETXTVIEW"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view"
-            tools:srcCompat="@drawable/ic_phone" />
+            app:layout_constraintTop_toTopOf="@+id/view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

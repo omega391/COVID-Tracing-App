@@ -9,7 +9,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -21,13 +20,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Gallery;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.load.engine.bitmap_recycle.ByteArrayAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,16 +37,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.google.j2objc.annotations.ReflectionSupport;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.OutputStream;
-import java.util.regex.Pattern;
 
 
 public class register extends AppCompatActivity {
@@ -65,6 +58,7 @@ public class register extends AppCompatActivity {
     String uid;
     OutputStream outputStream;
     ProgressDialog progressDialog;
+
     final int PICK_IMAGES = 100;
     final int CAMERA_REQUEST = 1888;
     @Override
@@ -81,7 +75,7 @@ public class register extends AppCompatActivity {
         HomeAddress = findViewById(R.id.homeAddress);
         pwd = (EditText)findViewById(R.id.pwd);
         btnsubmit = findViewById(R.id.btnsubmit);
-        dpHolder = findViewById(R.id.dpHolder);
+        dpHolder = findViewById(R.id.imageView);
         ID2 = findViewById(R.id.ID2);
         dpHolder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +129,7 @@ public class register extends AppCompatActivity {
                 progressDialog.getWindow().setBackgroundDrawableResource(
                         android.R.color.transparent
                 );
+
                 mAuth.createUserWithEmailAndPassword(Username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -282,13 +277,5 @@ public class register extends AppCompatActivity {
 
         }
     }
-//        FRAAAAAANZZZZZZZ
-//
-//                FRAAAAAANZZZZZZZ
-//        FRAAAAAANZZZZZZZ
-//                FRAAAAAANZZZZZZZ
-//        FRAAAAAANZZZZZZZ
-//                FRAAAAAANZZZZZZZ
-//        FRAAAAAANZZZZZZZ
-// https://github.com/omega391/COVID-Tracing-App/invitations
+
 }

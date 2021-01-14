@@ -5,15 +5,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -40,12 +46,15 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
+import at.markushi.ui.CircleButton;
+
 public class Homepage extends AppCompatActivity {
     private static final int CHOOSE_IMAGE = 101 ;
     EditText editText, photoURL;
     TextView FNAME, MNAME, LNAME, CPNUM, ADDRESS, EMAIL;
     ImageView image;
     Button button, logout;
+    CircleButton qrbtn;
     Uri uriProfileImage;
     String profileImageUrl;
     FirebaseAuth mAuth;
@@ -54,12 +63,13 @@ public class Homepage extends AppCompatActivity {
     FirebaseUser user;
     String uid;
     ProgressDialog progressDialog;
+    Dialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
         image = findViewById(R.id.imageView);
-        button = findViewById(R.id.btnsave);
+
         mAuth = FirebaseAuth.getInstance();
         logout = findViewById(R.id.logout);
         FNAME = findViewById(R.id.FNAME);
@@ -68,7 +78,13 @@ public class Homepage extends AppCompatActivity {
         CPNUM = findViewById(R.id.CPNUM);
         ADDRESS = findViewById(R.id.ADDRESS);
         EMAIL = findViewById(R.id.EMAIL);
+        qrbtn = findViewById(R.id.qrbtn);
 
+
+        // Content of Dialog of QR
+        final ImageView qrView = findViewById(R.id.qrImageView);
+        final Button donebtn = findViewById(R.id.donebtn);
+        dialog = new Dialog(Homepage.this);
 // Loading ProgressDialog
         progressDialog = new ProgressDialog(Homepage.this);
         progressDialog.show();
@@ -81,7 +97,7 @@ public class Homepage extends AppCompatActivity {
         uid = user.getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Userinfo").child(uid);
 
-// Logout Button 
+// Logout Button
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,12 +113,21 @@ public class Homepage extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-              // Fetch QR url link that is storage on Firebase Storage.
-                String url_link = dataSnapshot.child("url").getValue().toString();
+                // Fetch QR url link that is storage on Firebase Storage.
+                final String url_link = dataSnapshot.child("dpUrl").getValue().toString();
                 // used Picasso to set QR using URL fetched from Database.
                 Picasso.get()
                         .load(url_link)
                         .into(image);
+
+
+                qrbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                       Intent intent = new Intent(Homepage.this, QRCODE.class);
+                       startActivity(intent);
+                    }
+                });
 
                 String firstname = dataSnapshot.child("fname").getValue().toString();
                 String middlename = dataSnapshot.child("mname").getValue().toString();
@@ -125,7 +150,13 @@ public class Homepage extends AppCompatActivity {
             }
         });
     }
-// Onstart to Check if a User is Already Logged In.
+
+    private void openDialog() {
+
+
+    }
+
+    // Onstart to Check if a User is Already Logged In.
     @Override
     protected void onStart() {
         super.onStart();
@@ -135,11 +166,11 @@ public class Homepage extends AppCompatActivity {
             startActivity(new Intent(Homepage.this, MainActivity.class));
         }
     }
-// uses AlertDialog to confirm if user intentionally pressed Back to Sign out.
+    // uses AlertDialog to confirm if user intentionally pressed Back to Sign out.
     @Override
     public void onBackPressed() {
 
-       new AlertDialog.Builder(this)
+        new AlertDialog.Builder(this)
                 .setTitle("Sign-out")
                 .setMessage("Do you want to Sign out?")
                 .setNegativeButton("No", null)
